@@ -107,3 +107,15 @@ tail -f /var/log/qmail/current
 ...
 @400000003f88426f097eb3c4 starting delivery 1: msg 100179 to remote test@domain.com
 ...
+
+
+## IPTABLES ##
+
+# Accept all ssh trafic from  one ip with comment
+iptables -A INPUT -p tcp --dport 22 -s YourIP -j ACCEPT -m comment --comment "Your comment"
+# Drop all ssh trafic from all ip
+iptables -A INPUT -p tcp --dport 22 -j DROP
+# Add a rule to the top of the chain
+iptables -I INPUT -p tcp --dport 22 -s YourIP -j ACCEPT -m comment --comment "Your comment"
+# List rules with number
+iptables -L -n --line-numbers
