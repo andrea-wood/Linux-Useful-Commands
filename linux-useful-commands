@@ -119,3 +119,5 @@ iptables -A INPUT -p tcp --dport 22 -j DROP
 iptables -I INPUT -p tcp --dport 22 -s YourIP -j ACCEPT -m comment --comment "Your comment"
 # List rules with number
 iptables -L -n --line-numbers
+# Remove one rule
+iptables -D INPUT line_number
