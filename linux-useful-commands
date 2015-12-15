@@ -121,3 +121,26 @@ iptables -I INPUT -p tcp --dport 22 -s YourIP -j ACCEPT -m comment --comment "Yo
 iptables -L -n --line-numbers
 # Remove one rule
 iptables -D INPUT line_number
+
+
+# CREATE SSH LIMITED ACCESS TO WWW DIR OVER SFTP FOR USER NO HOME, NO SHELL
+# See: https://www.linode.com/docs/tools-reference/tools/limiting-access-with-sftp-jails-on-debian-and-ubuntu
+# Edit ssh config
+nano /etc/ssh/sshd_config
+# Add group rules
+Match Group www-data
+    ChrootDirectory /var/www
+    X11Forwarding no
+    AllowTcpForwarding no
+    ForceCommand internal-sftp
+# Restart ssh server
+service ssh restart
+# Add user no home
+adduser --no-create-home foo
+# Change the primary group to group www-data for the user foo
+usermod -g www-data foo 
+# Check users groups
+groups foo
+#  Set the correct permissions on /var/www
+chgrp -R www-data /var/www/*
+chmod -R g+w /var/www/*
