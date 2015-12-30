@@ -121,7 +121,10 @@ iptables -I INPUT -p tcp --dport 22 -s YourIP -j ACCEPT -m comment --comment "Yo
 iptables -L -n --line-numbers
 # Remove one rule
 iptables -D INPUT line_number
-
+# SAVE RULES
+iptables-save > /etc/iptables/rules.v4 (FOR IPv6 ip6tables-save > /etc/iptables/rules.v6 )
+# ADD RULES TO START UP SCRIPT
+iptables-restore < /etc/iptables/rules.v4
 
 # CREATE SSH LIMITED ACCESS TO WWW DIR OVER SFTP FOR USER NO HOME, NO SHELL
 # See: https://www.linode.com/docs/tools-reference/tools/limiting-access-with-sftp-jails-on-debian-and-ubuntu
