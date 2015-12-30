@@ -124,6 +124,7 @@ iptables -D INPUT line_number
 # SAVE RULES
 iptables-save > /etc/iptables/rules.v4 (FOR IPv6 ip6tables-save > /etc/iptables/rules.v6 )
 # ADD RULES TO START UP SCRIPT
+nano /etc/rc.local
 iptables-restore < /etc/iptables/rules.v4
 
 # CREATE SSH LIMITED ACCESS TO WWW DIR OVER SFTP FOR USER NO HOME, NO SHELL
