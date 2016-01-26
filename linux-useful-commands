@@ -148,3 +148,8 @@ groups foo
 #  Set the correct permissions on /var/www
 chgrp -R www-data /var/www/*
 chmod -R g+w /var/www/*
+
+
+## copy or move all files in dir up one level
+cp dir/* .
+mv dir/* .
