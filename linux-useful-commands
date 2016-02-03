@@ -156,3 +156,8 @@ chmod -R g+w /var/www/*
 ## copy or move all files in dir up one level
 cp dir/* .
 mv dir/* .
+
+
+## KVM
+# List status vms
+virsh list --all
