@@ -63,7 +63,7 @@ netstat -plant | grep :22
 # check if the port 22 TCP file is open
 lsof -i | grep sshd
 # Access to host behind a router from remote
- sudo ssh -L 5001:192.168.x.x:5001 [-p port_number] user@hostname
+ssh -L 5001:192.168.x.x:5001 [-p port_number] user@hostname
 (192.168.x.x --> is the ip on the lan of the remote host)
 
 ## Signature Authentication Openwrt ##
