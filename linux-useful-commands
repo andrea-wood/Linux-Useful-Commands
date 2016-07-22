@@ -16,6 +16,9 @@ mysqldump -u root -p --all-databases | gzip > {database}.sql.gz
 mysqldump -u root -p --opt --nanoall-databases > alldb.sql
 mysqldump -u root -p --all-databases --skip-lock-tables > alldb.sql
 
+# Import gz in database
+zcat /path/to/file.sql.gz | mysql -u 'root' -p'password' your_database
+
 # Using tar and ssh to efficiently copy files preserving permissions
 tar zcvf - /dir/ | ssh -p port_number user@host "tar zxv -C /dir/"
 
