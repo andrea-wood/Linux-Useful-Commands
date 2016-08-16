@@ -21,6 +21,8 @@ zcat /path/to/file.sql.gz | mysql -u 'root' -p'password' your_database
 
 # Using tar and ssh to efficiently copy files preserving permissions
 tar zcvf - /dir/ | ssh -p port_number user@host "tar zxv -C /dir/"
+# Extract same dir
+tar -zxvf file.tar.gz --strip 1
 
 #
 # SCREEN 
