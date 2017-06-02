@@ -123,6 +123,8 @@ tail -f /var/log/qmail/current
 iptables -A INPUT -p tcp --dport 22 -s YourIP -j ACCEPT -m comment --comment "Your comment"
 # Drop all ssh trafic from all ip
 iptables -A INPUT -p tcp --dport 22 -j DROP
+# Accept all https trafic from all ip
+iptables -I INPUT -p tcp --dport 443 -j ACCEPT
 # Add a rule to the top of the chain
 iptables -I INPUT -p tcp --dport 22 -s YourIP -j ACCEPT -m comment --comment "Your comment"
 # List rules with number
