@@ -134,8 +134,9 @@ iptables -D INPUT line_number
 # SAVE RULES
 iptables-save > /etc/iptables/rules.v4 (FOR IPv6 ip6tables-save > /etc/iptables/rules.v6 )
 # ADD RULES TO START UP SCRIPT
-echo "iptables-restore < /etc/iptables/rules.v4" > /etc/rc.local
-
+echo " #!/bin/sh \niptables-restore < /etc/iptables/rules.v4" > /etc/rc.local
+ chmod +x  /etc/rc.local
+ 
 # CREATE SSH LIMITED ACCESS TO WWW DIR OVER SFTP FOR USER NO HOME, NO SHELL
 # See: https://www.linode.com/docs/tools-reference/tools/limiting-access-with-sftp-jails-on-debian-and-ubuntu
 # Edit ssh config
