@@ -182,3 +182,6 @@ git commit -m ".gitignore is now working"
 
 #To undo git rm --cached filename
 git add filename.
+
+# move all files in subdir up to parent dir
+find . -mindepth 2 -type f -print -exec mv {} . \;
